@@ -80,7 +80,7 @@ public class HovercarAIMotor : MonoBehaviour
     //
     void UpdateVehicleOrder ()
     {
-        _currentPosition = _orderController.ReportHovercarWaypointReached(_waypointsReached);
+        _currentPosition = _orderController.ReportHovercarWaypointReached(_waypointsReached, this);
 
         if (_currentPosition < 0.5f)
             _rend.material.color = Color.Lerp(Color.red, Color.yellow, _currentPosition * 2);
@@ -94,4 +94,13 @@ public class HovercarAIMotor : MonoBehaviour
     {
         _orderController = oc;
     }
+
+
+    //
+    public void DestroyHovercar ()
+    {
+        Destroy(gameObject);
+    }
+
+
 }
